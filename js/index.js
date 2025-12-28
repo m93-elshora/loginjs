@@ -12,7 +12,7 @@ let successAlert = document.getElementById("successAlert");
 
 let allUsers = [];
 
- if (localStorage.getItem("allUsers") != null) {
+if (localStorage.getItem("allUsers") != null) {
   allUsers = JSON.parse(localStorage.getItem("allUsers"));
 }
 
@@ -25,40 +25,32 @@ registerForm.addEventListener("submit", function (e) {
   }
 });
 
-function addUser(){
-
-    let newUsers = {
+function addUser() {
+  let newUsers = {
     name: signName.value,
     email: signEmail.value,
-    password: signPassword.value
-  }
+    password: signPassword.value,
+  };
 
-  if (isExit(newUsers) ) {
+  if (isExit(newUsers)) {
     console.log("User already exists");
     existAlert.classList.replace("d-none", "d-block");
     successAlert.classList.replace("d-block", "d-none");
   } else {
-
-  console.log(newUsers);
-  allUsers.push(newUsers);
-  localStorage.setItem("allUsers", JSON.stringify(allUsers));
-  successAlert.classList.replace("d-none", "d-block");
-  existAlert.classList.replace("d-block", "d-none");
-  setTimeout(function () {
-    window.location.href="../singin/index.html";
-  }, 2000);
-
-  
-
-  
+    console.log(newUsers);
+    allUsers.push(newUsers);
+    localStorage.setItem("allUsers", JSON.stringify(allUsers));
+    successAlert.classList.replace("d-none", "d-block");
+    existAlert.classList.replace("d-block", "d-none");
+    setTimeout(function () {
+      window.location.href = "singin/index.html";
+    }, 2000);
   }
- 
 }
 
 function isExit(newUsers) {
   for (let i = 0; i < allUsers.length; i++) {
     if (allUsers[i].email.toLowerCase() === newUsers.email.toLowerCase()) {
-      
       return true;
     }
   }
@@ -77,24 +69,24 @@ function validateAllInputs(regex, element, alertMsg) {
     return false;
   }
 }
- function checkIfAllValid() {
-    if (
-      validateAllInputs(/^[a-zA-Z ]{2,30}$/, signName, nameAlert) &&
-      validateAllInputs(
-        /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-        signEmail,
-        emailAlert
-      ) &&
-      validateAllInputs(
-        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-        signPassword,
-        passwordAlert
-      )
-    ) {
-      console.log("All Inputs are valid");
-      return true;
-    } else {
-      console.log("Some Inputs are invalid");
-      return false;
-    }
+function checkIfAllValid() {
+  if (
+    validateAllInputs(/^[a-zA-Z ]{2,30}$/, signName, nameAlert) &&
+    validateAllInputs(
+      /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+      signEmail,
+      emailAlert
+    ) &&
+    validateAllInputs(
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+      signPassword,
+      passwordAlert
+    )
+  ) {
+    console.log("All Inputs are valid");
+    return true;
+  } else {
+    console.log("Some Inputs are invalid");
+    return false;
   }
+}
