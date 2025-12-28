@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Login System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styel.css" />
+  </head>
+  <body>
+    <form id="loginForm" class="login-form">
+    <div class="container mx-auto my-5 text-center">
+      <div class="group shadow-lg mx-auto w-75 p-5" >
+        <h2 class="text-info mb-4">Smart Login System</h2>
+
+        <input type="email" id="loginEmail" name="email" class="form-control mb-4" placeholder="Enter your email">
+        <input type="password" id="loginPassword" name="password" class="form-control mb-4" placeholder="Enter your password">
+
+        <div class="alert alert-danger d-none" id="loginEmailAlert">Email Not Valid</div>
+        <div class="alert alert-danger d-none" id="loginPasswordAlert">Password Must Be At Least 6 Characters</div>
+        <div class="alert alert-danger d-none" id="invalidAlert">Invalid Email Or Password</div>
+        <div class="alert alert-success d-none" id="successAlert">Success U Can Login Now</div>
+        <button type="submit" class="btn btn-info w-100 mb-3" id="login">Login</button>
+        <div>
+          <span>Don't have an account?</span>
+          <a href="../singup/index.html" class="text-info">Sign Up</a>
+        </div>
+      </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
